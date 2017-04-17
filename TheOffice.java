@@ -3,128 +3,165 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class TheOffice {
-	
+
 	private Employee[] workers;
-	
-	//Constructor
-	TheOffice(){}
-	
-	TheOffice(String fileLoc) throws TaskLevelException{
-		
-		//This is used to read a file, do NOT edit!!!
+
+	// Constructor
+	TheOffice() {
+	}
+
+	TheOffice(String fileLoc) throws TaskLevelException {
+
+		// This is used to read a file, do NOT edit!!!
 		Scanner fs = null;
 		File f = null;
-		
-		//Try Catch on file
-		try{ 
-			f = new File(fileLoc); 
-			fs = new Scanner(f); 
+
+		// Try Catch on file
+		try {
+			f = new File(fileLoc);
+			fs = new Scanner(f);
+		} catch (FileNotFoundException e) {
+			System.out.println("FileNotFoundException: The file \"" + fileLoc + "\" could not be found.");
 		}
-		catch(FileNotFoundException e){ 
-			System.out.println("FileNotFoundException: The file \""+ fileLoc + "\" could not be found.");
-		}
-		
-		
-		//First Line is number of employees
+
+		// First Line is number of employees
 		int size = Integer.parseInt(fs.nextLine());
-		
+
 		workers = new Employee[size];
-				
-		//This might be useful, feel free to delete, or not use these		
+
+		// This might be useful, feel free to delete, or not use these
 		RegionalManager manager = null;
 		int supremum = 0;
 		AssistantRegionalManager assistantManager = null;
-		int ATRM = 0; 
-		
-		//Loops through file
-		for(int i = 0; i < size; i++){
-			//Sets temp variables for all possible member variables
+		int ATRM = 0;
+
+		// Loops through file
+		for (int i = 0; i < size; i++) {
+			// Sets temp variables for all possible member variables
 			int IDNumber = -1;
 			String name = null;
-			Task[] taskList = null; 
-			int RegionNum = -1; 
+			Task[] taskList = null;
+			int RegionNum = -1;
 			int minimumTask = -1;
 			int numClients = -1;
 			String[] products = null;
 			int maxTaskComplexityLevel = -1;
-			
-			//Check which type of employee
+
+			// Check which type of employee
 			String type = fs.nextLine().trim();
-			
-			//Get Standard information (id, name)
+
+			// Get Standard information (id, name)
 			IDNumber = Integer.parseInt(fs.nextLine().trim());
-			name =  fs.nextLine();
-			
-			//Gets number of tasks and makes a task array based on the size
+			name = fs.nextLine();
+
+			// Gets number of tasks and makes a task array based on the size
 			int tasks = Integer.parseInt(fs.nextLine().trim());
 			taskList = new Task[tasks];
-				
-			//Fills up Task List
-			for(int j = 0; j < tasks; j++){
-				//Gets information for task
+
+			// Fills up Task List
+			for (int j = 0; j < tasks; j++) {
+				// Gets information for task
 				String work = fs.nextLine();
 				int num = Integer.parseInt(fs.nextLine().trim());
-				
-				//Sets task at array spot
-				taskList[j] = new Task(work, num); 
+
+				// Sets task at array spot
+				taskList[j] = new Task(work, num);
 			}
-			
-			//Scanner read for Regional Manager. Use this as an example to do the other 3 types
-			if(type.equals("RegionalManager")){
-				//Gets Region Number and Minimum Task Level
+
+			// Scanner read for Regional Manager. Use this as an example to do
+			// the other 3 types
+			if (type.equals("RegionalManager")) {
+				// Gets Region Number and Minimum Task Level
 				RegionNum = Integer.parseInt(fs.nextLine().trim());
 				minimumTask = Integer.parseInt(fs.nextLine().trim());
-				
-				//Loop through the Task list
-				for(int j = 0; j < taskList.length; j++ ){
-					//If a task is below the minimum task level, throw exception
-					if(taskList[j].getLevel() < minimumTask){
+
+				// Loop through the Task list
+				for (int j = 0; j < taskList.length; j++) {
+					// If a task is below the minimum task level, throw
+					// exception
+					if (taskList[j].getLevel() < minimumTask) {
 						throw new TaskLevelException(taskList[j].getLevel());
 					}
-				}			
-				
-				//set manager to new regional manager
+				}
+
+				// set manager to new regional manager
 				manager = new RegionalManager(IDNumber, name, taskList, RegionNum, minimumTask);
-				
-				//set workers[i] to regional manager
+
+				// set workers[i] to regional manager
 				workers[i] = manager;
-				
-				//Set supremum (Might be useful)
+
+				// Set supremum (Might be useful)
 				supremum = minimumTask;
-			}
-			else if(type.equals("AssistantRegionalManager")){
-				
-			}
-			else if(type.equals("SalesAssociate")){
-				
-			}
-			else if(type.equals("Receptionist")){
-				
+			} else if (type.equals("AssistantRegionalManager")) {
+
+			} else if (type.equals("SalesAssociate")) {
+
+			} else if (type.equals("Receptionist")) {
+
 			}
 		}
-		
-		//Set up Employee Arrays for regional manager
-		Employee[] a = new Employee[size -1];
-		for(int i = 0, j = 0; i < workers.length; i++){
-			if(!(workers[i] instanceof RegionalManager)){
+
+		// Set up Employee Arrays for regional manager
+		Employee[] a = new Employee[size - 1];
+		for (int i = 0, j = 0; i < workers.length; i++) {
+			if (!(workers[i] instanceof RegionalManager)) {
 				a[j++] = workers[i];
 			}
 		}
-		
-		//If there is a manager, set the subordinate array
-		if(manager != null){
+
+		// If there is a manager, set the subordinate array
+		if (manager != null) {
 			manager.setSubordinates(a);
 		}
 	}
-	
-	
-	//toString method
-	 
-	
-	//levelDisplay method
-	
-	
-	
+
+	// getWorkers method
+	public Employee[] getWorkers() {
+		return workers;
+	}
+
+	// setWorkers method
+	public void setWorkers(Employee[] workers) {
+		this.workers = workers;
+	}
+
+	// toString method
+	public String toString() {
+		String string = "";
+		
+		for(int i = 0; i<workers.length; i++){
+			if(workers[i] instanceof RegionalManager){
+				RegionalManager manager = (RegionalManager) workers[i];
+				string += manager.toString() + "\n";
+			}
+		}
+		
+		string.trim();
+		
+		return string;
+	}
+
+	// levelDisplay method
+	public String levelDisplay() {
+		String display = "";
+
+		for (int i = 0; i < workers.length; i++) {
+			if (workers[i] instanceof RegionalManager) {
+				RegionalManager manager = (RegionalManager) workers[i];
+				display += "Name: " + manager.getName() + "\tLevel: " + manager.getMinimumTask() + "\n";
+			} else if (workers[i] instanceof AssistantRegionalManager) {
+				AssistantRegionalManager manager = (AssistantRegionalManager) workers[i];
+				display += "Name: " + manager.getName() + "\tLevel: " + manager.getMinimumTask() + "\n";
+			} else {
+				display += "Name: " + workers[i].getName() + "\tLevel: 1\n";
+			}
+		}
+
+		display = display.trim();
+
+		return display;
+	}
+
 	public static void main(String[] args) throws TaskLevelException{
 		//Gets location for file
 		TheOffice o = new TheOffice((args[0]+".txt"));
@@ -138,4 +175,4 @@ public class TheOffice {
 		//Prints the sorted(by name) level display
 		System.out.println("\n\n\n" + o.levelDisplay());
 	}
-	
+}
