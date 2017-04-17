@@ -2,6 +2,21 @@ import java.util.Collections;
 
 public class Sorter {
 	public static void sort(Employee[] workers) {
+	
+		 Employee temporary;
+
+	       for(int i = 0; i < workers.length-1; i++){
+	            for(int j = 1; j < (i-1); j++){
+	                if(workers[j-1].getName().compareToIgnoreCase(workers[j].getName()) > 0){
+	                    temporary = workers[j-1];
+	                    workers[j-1] = workers[j];
+	                    workers[j] = temporary;
+	                }
+	            }
+	       }
+	   }
+		
+		
 		
 //		for (int i = 1; i < workers.length; i++){
 //			for (int x = 0; x < workers[i].getName().length(); x++){
@@ -43,5 +58,5 @@ public class Sorter {
 //			
 //			if first
 //		}
-	}
+//	}
 }
