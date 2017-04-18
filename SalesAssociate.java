@@ -4,8 +4,7 @@ public class SalesAssociate extends Employee {
 	private String[] products;
 	private RegionalManager supervisor;
 
-	public SalesAssociate(int IDNumber, String name, Task[] taskList, int numClients, String[] products,
-			RegionalManager supervisor) {
+	public SalesAssociate(int IDNumber, String name, Task[] taskList, int numClients, String[] products, RegionalManager supervisor) {
 		super.setIDNumber(IDNumber);
 		super.setName(name);
 		super.setTaskList(taskList);
@@ -45,7 +44,7 @@ public class SalesAssociate extends Employee {
 			format += "\n" + super.getTaskList()[i].toString();
 		}
 
-		format += "Regional Manager: " + supervisor + "\nNumber of clients:" + numClients + "\nProducts to sell:";
+		format += "Regional Manager: " + supervisor.getName() + "\nNumber of clients:" + numClients + "\nProducts to sell:";
 
 		for (int i = 0; i < products.length; i++) {
 			format += "\n" + products[i];

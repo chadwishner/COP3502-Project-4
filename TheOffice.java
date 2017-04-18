@@ -93,11 +93,61 @@ public class TheOffice {
 				// Set supremum (Might be useful)
 				supremum = minimumTask;
 			} else if (type.equals("AssistantRegionalManager")) {
-
+				
+				minimumTask = Integer.parseInt(fs.nextLine().trim());
+				
+				// Loop through the Task list
+				for (int j = 0; j < taskList.length; j++) {
+					// If a task is below the minimum task level, throw
+					// exception
+					if (taskList[j].getLevel() < minimumTask || minimumTask > supremum) {
+						throw new TaskLevelException(taskList[j].getLevel());
+					}
+				}
+				
+				if (assistantManager == null){
+					assistantManager = new AssistantRegionalManager( IDNumber,  name, taskList,  manager,  minimumTask);
+					workers[i] = assistantManager;
+				} else {
+					AssistantRegionalManager assMan = new AssistantRegionalManager( IDNumber,  name, taskList,  manager,  minimumTask);
+					workers[i] = assMan;
+				}
+				
 			} else if (type.equals("SalesAssociate")) {
-
+				
+				numClients = Integer.parseInt(fs.nextLine().trim());
+				int numProducts = Integer.parseInt(fs.nextLine().trim());
+				
+				// Loop through the Task list
+				for (int j = 0; j < taskList.length; j++) {
+					// If a task is below the minimum task level, throw
+					// exception
+					if (taskList[j].getLevel() < 1) {
+						throw new TaskLevelException(taskList[j].getLevel());
+					}
+				}
+				products = new String[numProducts];
+				for (int j = 0; j < numProducts; j++){
+					products[j] = fs.nextLine().trim();
+				}
+				SalesAssociate salAss = new SalesAssociate(IDNumber, name, taskList, numClients, products, manager);
+				workers[i] = salAss;
+				
 			} else if (type.equals("Receptionist")) {
-
+				
+				int maxTaskLevel = Integer.parseInt(fs.nextLine().trim());
+				
+				// Loop through the Task list
+				for (int j = 0; j < taskList.length; j++) {
+					// If a task is below the minimum task level, throw
+					// exception
+					if (taskList[j].getLevel() < 1 || taskList[j].getLevel() > maxTaskLevel) {
+						throw new TaskLevelException(taskList[j].getLevel());
+					}
+				}
+				
+				Receptionist ass = new Receptionist(IDNumber, name, taskList,  assistantManager,  maxTaskComplexityLevel); 
+				workers[i] = ass;
 			}
 		}
 

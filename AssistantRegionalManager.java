@@ -3,8 +3,7 @@ public class AssistantRegionalManager extends Employee {
 	private RegionalManager manager;
 	private int minimumTask;
 
-	public AssistantRegionalManager(int IDNumber, String name, Task[] taskList, RegionalManager manager,
-			int minimumTask) {
+	public AssistantRegionalManager(int IDNumber, String name, Task[] taskList, RegionalManager manager, int minimumTask) {
 		super.setIDNumber(IDNumber);
 		super.setName(name);
 		super.setTaskList(taskList);
