@@ -1,62 +1,30 @@
-//import java.util.Collections;
-
 public class Sorter {
-	public static void sort(Employee[] workers) {
 	
-		 Employee temporary;
+	/** Method to sort the array of employees by their name alphabetically using bubble sort
+	 * @param Employee[] workers
+	 */
+	public static void sort(Employee[] workers) {
+		// Create an Employee variable to share as a temporary holder
+		Employee temporary;
 
-	       for(int i = 0; i < workers.length-1; i++){
-	            for(int j = 1; j < (i-1); j++){
-	                if(workers[j-1].getName().compareToIgnoreCase(workers[j].getName()) > 0){
-	                    temporary = workers[j-1];
-	                    workers[j-1] = workers[j];
-	                    workers[j] = temporary;
-	                }
-	            }
-	       }
-	   }
-		
-		
-		
-//		for (int i = 1; i < workers.length; i++){
-//			for (int x = 0; x < workers[i].getName().length(); x++){
-//				if ((int)workers[i-1].getName().charAt(x) != (int)workers[i].getName().charAt(x)){
-//					if ((int)workers[i-1].getName().charAt(x) < (int)workers[i].getName().charAt(x)){
-//						
-//					}
-//				}
-//			}	
-//		}
-		
-			
-		
-//		public int compareTo(workers[].getName, otherObject)		
-//		Collections.sort(workers);
-
-		
-//		Employee[] workersSorted = new Employee[workers.length];
-//		Employee first;
-//		Employee second;
-//		Employee nextAlphabetically;
-//		int indexFirst = 0;
-//		int indexSecond = 0;
-//		
-//		for(int i = 0; i<workers.length; i++){
-//			for(int j = 0; j<workers.length; j++){
-//				if(workers[j] != null){
-//					first = workers[j];
-//					indexFirst = j;
-//				}
-//			}
-//			
-//			for(int j = indexFirst+1; j<workers.length; j++){
-//				if(workers[j] != null){
-//					second = workers[j];
-//					indexSecond = j;
-//				}
-//			}
-//			
-//			if first
-//		}
-//	}
+		// For loop to run through all of the employees
+		for(int i = 0; i < workers.length - 1; i++){
+			// For loop to compare 2 employees at a time
+			for(int j = 1; j < (i - 1); j++){
+				
+				// If the first worker's name is more lexicographically (ignoring case) then switch the slots of the two workers
+				if(workers[j-1].getName().compareToIgnoreCase(workers[j].getName()) > 0){
+					
+					// Store the first worker in temporary
+					temporary = workers[j-1];
+					
+					// Move the second worker to the first worker slot
+					workers[j-1] = workers[j];
+					
+					// Place the first worker in the second worker's slot
+					workers[j] = temporary;
+				}
+			}
+		}
+	}	
 }
