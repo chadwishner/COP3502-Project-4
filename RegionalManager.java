@@ -23,11 +23,11 @@ public class RegionalManager extends Employee {
 	}
 
 	/** Constructor for ReginalManager type when the manager does not have subordinates
-	 * @param IDNumber
-	 * @param name
-	 * @param taskList
-	 * @param RegionNum
-	 * @param minimumTask
+	 * @param int IDNumber
+	 * @param String name
+	 * @param Task[] taskList
+	 * @param int RegionNum
+	 * @param int minimumTask
 	 */
 	public RegionalManager(int IDNumber, String name, Task[] taskList, int RegionNum, int minimumTask) {
 		super.setIDNumber(IDNumber);
