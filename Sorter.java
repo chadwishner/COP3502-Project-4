@@ -2,8 +2,9 @@ public class Sorter {
 	
 	/** Method to sort the array of employees by their name alphabetically using bubble sort
 	 * @param Employee[] workers
+	 * @return Employee[] workers
 	 */
-	public static void sort(Employee[] workers) {
+	public static Employee[] sort(Employee[] workers) {
 		// Create an Employee variable to share as a temporary holder
 		Employee temporary;
 
@@ -26,5 +27,7 @@ public class Sorter {
 				}
 			}
 		}
+		
+		return workers;
 	}	
 }
