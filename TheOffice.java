@@ -152,13 +152,13 @@ public class TheOffice {
 			} else if (type.equals("Receptionist")) {
 				
 				// Get the Max Task Level
-				int maxTaskLevel = Integer.parseInt(fs.nextLine().trim());
+				maxTaskComplexityLevel = Integer.parseInt(fs.nextLine().trim());
 				
 				// Loop through the Task list
 				for (int j = 0; j < taskList.length; j++) {
 					
 					// If a task is below the minimum task level, throw exception
-					if (taskList[j].getLevel() < 1 || taskList[j].getLevel() > maxTaskLevel) {
+					if (taskList[j].getLevel() < 1 || taskList[j].getLevel() > maxTaskComplexityLevel) {
 						throw new TaskLevelException(taskList[j].getLevel());
 					}
 				}
@@ -206,7 +206,7 @@ public class TheOffice {
 		String format = "";
 		
 		// Run through the list of Regional Managers and call their toString methods
-		for(int i = 0; i<workers.length; i++){
+		for(int i = 0; i < workers.length; i++){
 			if(workers[i] instanceof RegionalManager){
 				RegionalManager manager = (RegionalManager) workers[i];
 				format += manager.toString() + "\n";
@@ -214,7 +214,7 @@ public class TheOffice {
 		}
 		
 		// Trim whitespace
-		format.trim();
+		format = format.substring(0, format.length() - 1);
 		
 		return format;
 	}

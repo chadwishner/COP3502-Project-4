@@ -68,16 +68,16 @@ public class SalesAssociate extends Employee {
 	 * @return String format
 	 */
 	public String toString() {
-		String format = "Sales Associate\nName: " + super.getName() + "\nID: " + super.getIDNumber() + "\nTask List:";
+		String format = "Sales Associate\nName: " + super.getName() + "\nID: " + super.getIDNumber() + "\nTask List: ";
 
 		for (int i = 0; i < super.getTaskList().length; i++) {
 			format += "\n" + super.getTaskList()[i].toString();
 		}
 
-		format += "Regional Manager: " + supervisor.getName() + "\nNumber of clients:" + numClients + "\nProducts to sell:";
+		format += "\nRegional Manager: " + supervisor.getName() + "\nNumber of clients: " + numClients + "\nProducts to sell: ";
 
 		for (int i = 0; i < products.length; i++) {
-			format += "\n" + products[i];
+			format += "\n\t" + products[i];
 		}
 
 		return format;

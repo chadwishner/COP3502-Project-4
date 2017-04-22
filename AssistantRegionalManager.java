@@ -51,13 +51,13 @@ public class AssistantRegionalManager extends Employee {
 	 * @return String format
 	 */
 	public String toString() {
-		String format = "Assitant Regional Manager\nName: " + super.getName() + "\nID: " + super.getIDNumber() + "\nTask List:";
+		String format = "Assistant Regional Manager\nName: " + super.getName() + "\nID: " + super.getIDNumber() + "\nTask List: ";
 
 		for (int i = 0; i < super.getTaskList().length; i++) {
 			format += "\n" + super.getTaskList()[i].toString();
 		}
 
-		format += "\nMinimum Task Level: " + minimumTask;
+		format += "\nRegional Manager: " + manager.getName() + "\nMinimum Task Level: " + minimumTask;
 
 		return format;
 	}

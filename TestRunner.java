@@ -14,6 +14,7 @@ import org.junit.runners.Suite.SuiteClasses;
 @SuiteClasses({EmployeeTest.class, AssistantRegionalManagerTest.class, ReceptionistTest.class, SalesAssociateTest.class, RegionalManagerTest.class, SorterTest.class, TaskTest.class, TheOfficeTest.class})
 
 public class TestRunner {
+	
 	@AfterClass 
 	public static void logout() throws IOException {
 		String allErrors = EmployeeTest.error + "\n\n\n"+ AssistantRegionalManagerTest.error + "\n\n\n"+ ReceptionistTest.error + "\n\n\n"+ SalesAssociateTest.error + "\n\n\n"+ RegionalManagerTest.error + "\n\n\n"+ SorterTest.error + "\n\n\n"+ TaskTest.error + "\n\n\n"+ TheOfficeTest.error;

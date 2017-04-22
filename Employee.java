@@ -69,7 +69,7 @@ public abstract class Employee {
 	 * @return String format
 	 */
 	public String toString() {
-		String format = "Name: " + name + "\nID: " + IDNumber + "\nTask List:";
+		String format = "Name: " + name + "\nID: " + IDNumber + "\nTask List: ";
 
 		for (int i = 0; i < taskList.length; i++) {
 			format += "\n" + taskList[i].toString();

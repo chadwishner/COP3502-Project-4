@@ -83,18 +83,20 @@ public class RegionalManager extends Employee {
 	 * @return String format
 	 */
 	public String toString() {
-		String format = "Regional Manager\nName: " + super.getName() + "\nID: " + super.getIDNumber() + "\nTask List:";
+		String format = "Regional Manager\nName: " + super.getName() + "\nID: " + super.getIDNumber() + "\nTask List: ";
 
 		for (int i = 0; i < super.getTaskList().length; i++) {
 			format += "\n" + super.getTaskList()[i].toString();
 		}
 
-		format += "\nRegion Number: " + RegionNum + "\nMinimum Task Level: " + minimumTask + "\nEmployees:\n";
+		format += "\nRegion Number: " + RegionNum + "\nMinimum Task Level: " + minimumTask + "\nEmployees: \n";
 
 		for (int i = 0; i < subordinates.length; i++) {
 			format += subordinates[i].toString() + "\n";
 		}
 
+		format = format.substring(0, format.length() - 1);
+		
 		return format;
 	}
 

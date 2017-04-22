@@ -2,16 +2,15 @@ public class Sorter {
 	
 	/** Method to sort the array of employees by their name alphabetically using bubble sort
 	 * @param Employee[] workers
-	 * @return Employee[] workers
 	 */
 	public static Employee[] sort(Employee[] workers) {
 		// Create an Employee variable to share as a temporary holder
 		Employee temporary;
 
 		// For loop to run through all of the employees
-		for(int i = 0; i < workers.length - 1; i++){
+		for(int i = workers.length; i > 0 ; i--){
 			// For loop to compare 2 employees at a time
-			for(int j = 1; j < (i - 1); j++){
+			for(int j = 1; j < i; j++){
 				
 				// If the first worker's name is more lexicographically (ignoring case) then switch the slots of the two workers
 				if(workers[j-1].getName().compareToIgnoreCase(workers[j].getName()) > 0){
@@ -28,6 +27,6 @@ public class Sorter {
 			}
 		}
 		
-		return workers;
+	return workers;
 	}	
 }

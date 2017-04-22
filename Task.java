@@ -31,7 +31,7 @@ public class Task {
 	 * @return String format
 	 */
 	public String toString() {
-		String format = "Task: " + name + "\tLevel: " + level;
+		String format = "\tTask: " + name + "\tLevel: " + level;
 
 		return format;
 	}

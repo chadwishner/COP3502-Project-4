@@ -51,13 +51,13 @@ public class Receptionist extends Employee {
 	 * @return String format
 	 */
 	public String toString() {
-		String format = "Receptionist\nName: " + super.getName() + "\nID: " + super.getIDNumber() + "\nTask List:";
+		String format = "Receptionist\nName: " + super.getName() + "\nID: " + super.getIDNumber() + "\nTask List: ";
 
 		for (int i = 0; i < super.getTaskList().length; i++) {
-			format += super.getTaskList()[i].toString();
+			format += "\n" + super.getTaskList()[i].toString();
 		}
 
-		format += "\nAssistant Regional Manager: " + supervisor + "\nMax Task Level: " + maxTaskComplexityLevel;
+		format += "\nAssistant Regional Manager: " + supervisor.getName() + "\nMax Task Level: " + maxTaskComplexityLevel;
 
 		return format;
 	}
